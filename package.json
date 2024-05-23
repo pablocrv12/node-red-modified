@@ -38,7 +38,7 @@
         "content-type": "1.0.5",
         "cookie": "0.5.0",
         "cookie-parser": "1.4.6",
-        "cors": "2.8.5",
+        "cors": "^2.8.5",
         "cronosjs": "1.7.1",
         "denque": "2.1.0",
         "express": "4.19.2",
