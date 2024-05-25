@@ -16,6 +16,4 @@ EXPOSE 1880
 
 CMD ["npm", "start"]
 
-## construir con: docker build --no-cache -t node-red-modified:latest
-
-## ejecutar con: docker run -d -e JWT_TOKEN="${token}" --name nodered-${userId} -p 1880:1880 node-red-modified:latest
+## ejecutar con: docker build --no-cache -t node-red-modified:latest
