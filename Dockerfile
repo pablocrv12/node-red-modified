@@ -2,13 +2,17 @@
 FROM node:latest
 
 # Instala git
-RUN apt-get update && apt-get install -y git && apt-get clean
+# RUN apt-get update && apt-get install -y git && apt-get clean
 
-RUN git clone https://github.com/pablocrv12/node-red-modified
+# RUN git clone https://github.com/pablocrv12/node-red-modified
 
 WORKDIR /node-red-modified
 
+COPY package*.json ./
+
 RUN npm install
+
+COPY . .
 
 RUN npm run build
 
