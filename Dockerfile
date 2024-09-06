@@ -1,25 +1,23 @@
 # Usa una imagen base de Node.js
 FROM node:latest
 
-# Instala git
-# RUN apt-get update && apt-get install -y git && apt-get clean
-
-# RUN git clone https://github.com/pablocrv12/node-red-modified
-
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /node-red-modified
 
+# Copia los archivos package.json y package-lock.json al directorio de trabajo en el contenedor
 COPY package*.json ./
 
+# Instala las dependencias del proyecto especificadas en package.json
 RUN npm install --legacy-peer-deps
 
+# Copia todo el código fuente de la aplicación al directorio de trabajo en el contenedor
 COPY . .
 
+# Ejecuta el script de construcción del proyecto
 RUN npm run build
 
+# Expone el puerto 1880 en el contenedor
 EXPOSE 1880
 
+# Define el comando por defecto para ejecutar cuando el contenedor se inicie
 CMD ["npm", "start"]
-
-# construir con: docker build --no-cache -t node-red-modified:latest .
-
-# ejecutar con: docker run -d -e JWT_TOKEN="${token}" --name nodered-${userId} -p 1880:1880 node-red-modified:latest
